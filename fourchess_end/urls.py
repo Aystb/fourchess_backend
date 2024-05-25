@@ -25,5 +25,9 @@ urlpatterns = [
     re_path("m1/4020303-0-default/fourchess/(\d+)/histories", History.getHistories),
     path("m1/4020303-0-default/fourchess/login", User.login),
     path("m1/4020303-0-default/fourchess/register", User.register),
-    re_path("m1/4020303-0-default/fourchess/(\d+)/insertHistory", History.insertHistory)
+    re_path("m1/4020303-0-default/fourchess/(\d+)/insertHistory", History.insertHistory),
+
+    re_path("m1/4020303-0-default/fourchess/(\d+)/createPvp", User.createPvp),
+    re_path("m1/4020303-0-default/fourchess/(\d+)/clientGetMsg", User.clientGetMsg),
+    re_path("m1/4020303-0-default/fourchess/(\d+)/clientSendMsg", User.clientSendMsg)
 ]

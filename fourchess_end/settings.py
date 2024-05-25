@@ -78,7 +78,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": 'fourchess',
-        "User": 'root',
+        "USER": 'root',
         'PASSWORD': 'agr747804',
         'HOST': '127.0.0.1',
         'PORT': '3306'
@@ -123,3 +123,11 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+        'TurnFlag': True
+    }
+}

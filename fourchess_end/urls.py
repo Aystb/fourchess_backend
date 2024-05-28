@@ -19,6 +19,7 @@ from django.urls import path, re_path
 import User.views as User
 import History.views as History
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     re_path("m1/4020303-0-default/fourchess/history(\d+)", History.getSingleHistory),
@@ -29,5 +30,6 @@ urlpatterns = [
 
     re_path("m1/4020303-0-default/fourchess/(\d+)/createPvp", User.createPvp),
     re_path("m1/4020303-0-default/fourchess/(\d+)/clientGetMsg", User.clientGetMsg),
-    re_path("m1/4020303-0-default/fourchess/(\d+)/clientSendMsg", User.clientSendMsg)
+    re_path("m1/4020303-0-default/fourchess/(\d+)/clientSendMsg", User.clientSendMsg),
+    path("index", User.index)
 ]

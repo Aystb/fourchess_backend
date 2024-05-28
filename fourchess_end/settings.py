@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "History.apps.HistoryConfig",
     "User.apps.UserConfig",
-    'rest_framework'
+    'rest_framework',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -68,8 +69,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = "fourchess_end.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -129,5 +128,15 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
         'LOCATION': 'unique-snowflake',
         'TurnFlag': True
+    }
+}
+
+WSGI_APPLICATION = "fourchess_end.wsgi.application"
+
+ASGI_APPLICATION = "fourchess_end.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
     }
 }

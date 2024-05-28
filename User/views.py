@@ -32,19 +32,20 @@ def register(request):
     json_result = json.loads(postBody)
     name = json_result['name']
     password = json_result['password']
-
+    nickname = json_result['nickname']
     isUserExist = User.objects.filter(name=name)
     if (isUserExist.exists()):
         wrongUser = {
             "id": -1,
             "name": isUserExist[0].name,
-            "password": isUserExist[0].password
+            "password": isUserExist[0].password,
+            "nickname": isUserExist[0].nickname
         }
         userSerializer = UserSerializer(wrongUser)
         return JsonResponse(userSerializer.data, safe=False, status=400)
     else:
-        User.objects.create(name=name, password=password)
-        user = User.objects.get(name=name, password=password);
+        User.objects.create(name=name, password=password, nickname=nickname)
+        user = User.objects.get(name=name, password=password, nickname=nickname);
         userSerializer = UserSerializer(user)
         return JsonResponse(userSerializer.data, safe=False, status=200)
 
@@ -84,3 +85,7 @@ def clientGetMsg(request, userid):
         return JsonResponse(data, status=200, safe=False)
     except queue.Empty as e:
         return JsonResponse({"isSuccess": "failed"}, status=400, safe=False)
+
+
+def index(request):
+    return render(request, 'index.html')
